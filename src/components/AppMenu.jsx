@@ -23,7 +23,7 @@ function AppMenu() {
             <NavbarBrand tag={Link} to='/'>Minhas Séries</NavbarBrand>
             <NavbarToggler onClick={toggleMenu} />
             <Collapse isOpen={open} navbar>
-                <Nav className='ml-auto' navbar>
+                <Nav className='ms-auto' navbar>
                     <NavItem>
                         <NavLink tag={Link} to='/generos'>Gêneros</NavLink>
                     </NavItem>

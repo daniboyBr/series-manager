@@ -16,7 +16,7 @@ const Series = () => {
 
     const excluir = (generoId) => {
         axios.delete(`/api/series/${generoId}`).then(resp => {
-            if(resp.status === 200) {
+            if (resp.status === 200) {
                 setData(data.filter(current => {
                     return current.id !== generoId
                 }))
@@ -30,18 +30,27 @@ const Series = () => {
                 <th scope="row">{record.id}</th>
                 <td>{record.name}</td>
                 <td>
-                    <Link className="btn btn-sm btn-warning"  title="Editar" to={`/series/${record.id}`}>Editar</Link>
+                    <Link className="btn btn-sm btn-warning" title="Editar" to={`/series/${record.id}`}>Editar</Link>
                     <span>&nbsp;</span>
-                    <button className="btn btn-sm btn-danger" onClick={() => {excluir(record.id)}} title="Excluir">-</button>
+                    <button className="btn btn-sm btn-danger" onClick={() => { excluir(record.id) }} title="Excluir">-</button>
                 </td>
             </tr>
+        )
+    }
+
+    const header = () => {
+        return (
+            <>
+                <h1>Séries</h1>
+                <Link className="btn btn-primary mb-1" to="/series/nova">Novo Série</Link>
+            </>
         )
     }
 
     if (data.length === 0) {
         return (
             <div className="container">
-                <h1>Séries</h1>
+                {header()}
                 <div className="alert alert-warning" role="alert">
                     Você não possui séries criadas!
                 </div>
@@ -51,8 +60,7 @@ const Series = () => {
 
     return (
         <div className="container">
-            <h1>Séries</h1>
-            <Link className="btn btn-primary mb-1" to="/series/nova">Novo Série</Link>
+            {header()}
             <table className="table table-dark">
                 <thead>
                     <tr>
